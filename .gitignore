@@ -1,0 +1,52 @@
+# Video files (don't commit large files)
+*.mp4
+*.MP4
+*.mov
+*.MOV
+*.avi
+*.AVI
+*.mkv
+*.MKV
+*.flv
+*.wmv
+
+# Output files
+output_*.mp4
+output_*.mov
+merged_*.mp4
+
+# Temporary files
+*.tmp
+*.temp
+temp_*/
+video_edit_*/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files
+test_*.sh
+test_*.mp4
+clip*.mp4
+filelist*.txt
+
+# Claude Code
+.claude/
