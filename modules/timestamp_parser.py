@@ -10,7 +10,6 @@ def parse_timestamp(ts: str) -> float:
     Supports formats:
     - HH:MM:SS (e.g., "1:02:03")
     - MM:SS (e.g., "2:03")
-    - Seconds (e.g., "123" or "123.5")
 
     Args:
         ts: Timestamp string
@@ -33,11 +32,7 @@ def parse_timestamp(ts: str) -> float:
         m, s = map(int, match.groups())
         return m * 60 + s
 
-    # Try seconds format
-    elif match := re.match(r'^(\d+\.?\d*)$', ts):
-        return float(match.group(1))
-
-    raise ValueError(f"Invalid timestamp format: '{ts}'")
+    raise ValueError(f"Invalid timestamp format: '{ts}' (use MM:SS or HH:MM:SS)")
 
 
 def parse_range(input_str: str) -> Tuple[float, float]:

@@ -13,6 +13,7 @@ from modules import ffmpeg_wrapper
 from modules import timestamp_parser
 from modules import cli_handler
 from modules import file_manager
+from modules import interactive_review
 
 
 # Configuration
@@ -195,6 +196,31 @@ def main() -> int:
             return 1
 
         # Print summary
+        cli_handler.print_summary(ranges)
+
+        # Interactive review screen
+        print("\nOpening interactive review screen...")
+        print("(Use arrow keys to navigate, Space to toggle, C to continue)")
+        import time
+        time.sleep(1)  # Give user time to read message
+
+        reviewed_ranges = interactive_review.review_ranges(ranges)
+
+        # Check if user cancelled
+        if reviewed_ranges is None:
+            print("\nOperation cancelled by user.")
+            return 0
+
+        # Update ranges with user's selection
+        ranges = reviewed_ranges
+
+        # Check if any ranges are selected
+        if not ranges:
+            cli_handler.print_error("No ranges selected. Exiting.")
+            return 1
+
+        # Print final summary
+        print("\nFinal selection:")
         cli_handler.print_summary(ranges)
 
         # Display mode information

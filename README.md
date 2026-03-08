@@ -42,6 +42,10 @@ Input: input.MP4
 Duration: 00:23:45
 
 Enter timestamp ranges to extract (e.g., '2:03 to 5:24')
+Supported formats:
+  - HH:MM:SS to HH:MM:SS  (e.g., '1:02:03 to 1:30:00')
+  - MM:SS to MM:SS        (e.g., '2:03 to 5:24')
+
 Type 'done' when finished adding ranges.
 
 Range #1 (or 'done'): 2:03 to 5:24
@@ -51,6 +55,40 @@ Range #2 (or 'done'): 10:30 to 12:15
   ✓ Added: 00:10:30 - 00:12:15
 
 Range #3 (or 'done'): done
+
+------------------------------------------------------------
+Collected 2 range(s):
+  1. 00:02:03 - 00:05:24 (duration: 00:03:21)
+  2. 00:10:30 - 00:12:15 (duration: 00:01:45)
+------------------------------------------------------------
+
+Opening interactive review screen...
+(Use arrow keys to navigate, Space to toggle, C to continue)
+
+[Interactive Review Screen Opens]
+==============================================================
+Review and Select Ranges
+==============================================================
+
+Controls:
+  ↑/↓  Navigate   Space/Enter  Toggle   D  Delete
+  A    Select All   N  Deselect All   C  Continue   Q  Quit
+
+Ranges:
+--------------------------------------------------------------
+> [✓] 1. 00:02:03 - 00:05:24 (duration: 00:03:21)
+  [✓] 2. 00:10:30 - 00:12:15 (duration: 00:01:45)
+--------------------------------------------------------------
+Selected: 2/2 ranges | Total duration: 00:05:06
+
+[After pressing C to continue]
+
+Final selection:
+------------------------------------------------------------
+Collected 2 range(s):
+  1. 00:02:03 - 00:05:24 (duration: 00:03:21)
+  2. 00:10:30 - 00:12:15 (duration: 00:01:45)
+------------------------------------------------------------
 
 [*] Processing clips...
 [*] Extracting clip 1/2: 00:02:03 - 00:05:24
@@ -64,21 +102,41 @@ Range #3 (or 'done'): done
 
 ## Timestamp Formats
 
-All formats are supported:
+Supported formats:
 - `HH:MM:SS to HH:MM:SS` - Example: `1:02:03 to 1:30:00`
 - `MM:SS to MM:SS` - Example: `2:03 to 5:24`
-- `Seconds to Seconds` - Example: `123 to 324`
 
 Separators: `to`, `-`, `..` all work
 
+## Interactive Review Controls
+
+After entering ranges, use the interactive review screen to verify and edit:
+
+| Key | Action |
+|-----|--------|
+| **↑/↓** | Navigate between ranges |
+| **Space/Enter** | Toggle range on/off |
+| **A** | Select all ranges |
+| **N** | Deselect all ranges |
+| **D** | Delete current range |
+| **C** | Continue with selected ranges |
+| **Q/ESC** | Quit without changes |
+
+See [INTERACTIVE_REVIEW_GUIDE.md](INTERACTIVE_REVIEW_GUIDE.md) for detailed instructions.
+
 ## Features
 
+- **Interactive Review Screen**: Review and edit your selections before processing
+  - Navigate with arrow keys
+  - Toggle ranges on/off with Space
+  - Delete incorrect ranges with D
+  - See total duration in real-time
 - **Fast processing**: Stream copy mode (no re-encoding by default)
 - **Lossless**: Preserves original video quality
 - **Auto-sorted**: Clips automatically ordered by start time
-- **Interactive**: Easy CLI interface
 - **Smart cleanup**: Automatic temp file management
 - **A/V sync fixed**: Proper timestamp handling
+- **Error correction**: Easy way to fix timestamp mistakes
 
 ## Technical Details
 

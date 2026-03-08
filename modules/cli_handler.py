@@ -20,7 +20,6 @@ def print_header(video_path: str, duration: float) -> None:
     print("Supported formats:")
     print("  - HH:MM:SS to HH:MM:SS  (e.g., '1:02:03 to 1:30:00')")
     print("  - MM:SS to MM:SS        (e.g., '2:03 to 5:24')")
-    print("  - Seconds to Seconds    (e.g., '123 to 324')")
     print("\nType 'done' when finished adding ranges.\n")
 
 
